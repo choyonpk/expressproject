@@ -11,7 +11,7 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/createmanager', (req, res)=>{
-	res.render('user/createmanager');
+	res.render('admin/user/createmanager');
 });
 router.post('/createmanager', (req, res)=>{
 
@@ -47,7 +47,7 @@ router.get('/editmanager/:id', (req, res)=>{
 		id: req.params.id
 	};
     
-	res.render('user/edit',user);
+	res.render('admin/user/edit',user);
 });
 
 router.post('/editmanager/:id', (req, res)=>{
@@ -77,7 +77,7 @@ router.get('/deletemanager/:id', (req, res)=>{
 		id: req.params.id
 	};
     
-	res.render('user/deletemanager',user);
+	res.render('admin/user/deletemanager',user);
 });
 
 router.post('/deletemanager/:id', (req, res)=>{
@@ -104,7 +104,7 @@ else{
 }
 })
 router.get('/addadmin', (req, res)=>{
-	res.render('user/addadmin');
+	res.render('admin/user/addadmin');
 });
 router.post('/addadmin', (req, res)=>{
 
@@ -143,7 +143,7 @@ router.get('/deleteuser/:id', (req, res)=>{
 		id: req.params.id
 	};
     
-	res.render('user/deleteuser',user);
+	res.render('admin/user/deleteuser',user);
 });
 
 router.post('/deleteuser/:id', (req, res)=>{

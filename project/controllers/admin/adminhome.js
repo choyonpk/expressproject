@@ -16,31 +16,31 @@ router.get('/', (req, res)=>{
 	var user = {
 		id: req.params.id
 	};	
-	res.render('adminhome/adminhome',user);	
+	res.render('admin/adminhome/adminhome',user);	
 })
 router.get('/managerlist', (req, res)=>{
 	var user="manager";
 	userModel.getAll(user,function(results)
 	{
-	   res.render('adminhome/managerlist', {users: results});
+	   res.render('admin/adminhome/managerlist', {users: results});
 	});
 })
 router.get('/userlist', (req, res)=>{
 	var user="user";
 	userModel.getAll(user,function(results)
 	{
-	   res.render('adminhome/userlist', {users: results});
+	   res.render('admin/adminhome/userlist', {users: results});
 	});
 })
 router.get('/adminlist', (req, res)=>{
 	var user="admin";
 	userModel.getAll(user,function(results)
 	{
-	   res.render('adminhome/adminlist', {users: results});
+	   res.render('admin/adminhome/adminlist', {users: results});
 	});
 })
 router.get('/searchuser', (req, res) => {
-    res.render('adminhome/searchuser');
+    res.render('admin/adminhome/searchuser');
 });
 
 router.post('/searchuser', (req, res) => {
