@@ -5,9 +5,9 @@ const cookieParser 		= require('cookie-parser');
 const app				= express();
 
 
-const adminlogin				= require('./controllers/adminlogin');
-const adminhome				= require('./controllers/adminhome');
-const user				= require('./controllers/user');
+const adminlogin				= require('./controllers/admin/adminlogin');
+const adminhome				= require('./controllers/admin/adminhome');
+const user				= require('./controllers/admin/user');
 const logout			= require('./controllers/logout');
 const port				= 3000;
 
