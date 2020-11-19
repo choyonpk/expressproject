@@ -21,6 +21,7 @@ module.exports= {
 		});
 	},
 	insert: function(user, callback){
+		console.log(user.type);
 		var sql = "Insert into user (Name,UserName,Email,ContactNo,NID,Gender,Address,UserType,Password) VALUES('"+user.name+"','"+user.username+"','"+user.email+"','"+user.contactno+"','"+user.nid+"','"+user.gender+"','"+user.address+"','"+user.type+"', '"+user.password+"')";
 		db.execute(sql, function(status){
 			if(status){

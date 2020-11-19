@@ -11,6 +11,9 @@ const user				= require('./controllers/admin/user');
 const logout			= require('./controllers/logout');
 const login             = require('./controllers/login');
 const userhome          = require('./controllers/customer/user');
+const registration       = require('./controllers/customer/registration');
+const transaction       = require('./controllers/customer/transaction');
+
 const port				= 3000;
 
 //configuration
@@ -34,7 +37,11 @@ app.use('/adminhome',adminhome);
 app.use('/user',user);
 app.use('/logout', logout);
 app.use('/login',login);
+app.use('/registration',registration);
 app.use('/userhome',userhome);
+app.use('/transaction',transaction);
+
+
 
 
 

@@ -5,14 +5,7 @@ const router = express.Router();
 
 router.get('/',(req,res)=>
 {
-    res.render('./customer/userhome');
+    res.render('./customer/transaction');
 })
-
-router.get('/update',(req,res)=>
-{
-    res.render('./customer/userupdate');
-})
-
-
 
 module.exports = router;
