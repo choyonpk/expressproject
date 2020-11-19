@@ -53,35 +53,6 @@ module.exports= {
 		});
 
 	},
-	insert2: function(user, callback){
-		var sql = "Insert into employeer (ename,age,contactno,username,email,password) VALUES('"+user.ename+"','"+user.age+"','"+user.contactno+"','"+user.username+"','"+user.email+"', '"+user.password+"')";
-		db.execute(sql, function(status){
-			if(status){
-				callback(true);
-			}else{
-				callback(false);
-			}
-		});
-	},
-	validate2: function(user, callback){
-		var sql = "select * from employeer where username='"+user.username+"' and password='"+user.password+"'";
-		db.getResults(sql, function(results){
-			if(results.length >0 ){
-				callback(true);
-			}else{
-				callback(false);
-			}
-		});
-	},
-	insert3: function(user, callback){
-		var sql = "update employeer set newcompany = '"+user.enewcompany+"',jobtitle = '"+user.jtitle+"',joblocation = '"+user.jlocation+"' where username= '"+user.username+"'";
-		db.execute(sql, function(status){
-			if(status){
-				callback(true);
-			}else{
-				callback(false);
-			}
-		});
-	},
+
 	
 } 
