@@ -4,13 +4,13 @@ const router 	= express.Router();
 
 
 router.get('*',  (req, res, next)=>{
-	if(req.cookies['username'] == null)
-	{		
-		res.redirect('/adminlogin');			
-	}
-	else{		
+	// if(req.cookies['username'] == null)
+	// {		
+	// 	res.redirect('/adminlogin');			
+	// }
+	// else{		
 		next();			
-	}		
+	// }		
 });
 router.get('/', (req, res)=>{
 	var user = {
