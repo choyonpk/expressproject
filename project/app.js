@@ -6,9 +6,11 @@ const app				= express();
 
 
 // const adminlogin				= require('./controllers/admin/adminlogin');
-const adminhome				= require('./controllers/admin/adminhome');
+const adminhome			= require('./controllers/admin/adminhome');
 const user				= require('./controllers/admin/user');
 const logout			= require('./controllers/logout');
+const login             = require('./controllers/login');
+const userhome          = require('./controllers/customer/user');
 const port				= 3000;
 
 //configuration
@@ -31,7 +33,9 @@ app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: fals
 app.use('/adminhome',adminhome);
 app.use('/user',user);
 app.use('/logout', logout);
-// app.use('/adminlogin',adminlogin);
+app.use('/login',login);
+app.use('/userhome',userhome);
+
 
 
 

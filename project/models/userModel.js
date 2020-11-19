@@ -2,10 +2,10 @@ const db = require('./db');
 
 module.exports= {
 	validate: function(user, callback){
-		var sql = "select * from user where UserName='"+user.username+"' and UserType='"+user.type+"'";
+		var sql = "select * from user where UserName='"+user.username+"' and Password='"+user.password+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
-				callback(true);
+				callback(results[0].UserType);
 			}else{
 				callback(false);
 			}

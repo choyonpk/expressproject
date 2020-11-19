@@ -7,7 +7,7 @@ router.get('/', (req, res)=>{
 	//res.cookie('uname', '');
 
 	res.clearCookie('username');
-	res.redirect('/adminlogin');
+	res.redirect('/login');
 });
 
 
