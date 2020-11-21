@@ -4,19 +4,16 @@ const router 	= express.Router();
 
 
 router.get('*',  (req, res, next)=>{
-	// if(req.cookies['username'] == null)
-	// {		
-	// 	res.redirect('/adminlogin');			
-	// }
-	// else{		
+	if(req.cookies['username'] == null)
+	{		
+	res.redirect('/login');			
+	}
+	else{		
 		next();			
-	// }		
+	}		
 });
 router.get('/', (req, res)=>{
-	var user = {
-		id: req.params.id
-	};	
-	res.render('admin/adminhome/adminhome',user);	
+	res.render('admin/adminhome/adminhome');	
 })
 router.get('/managerlist', (req, res)=>{
 	var user="manager";
@@ -50,4 +47,77 @@ router.post('/searchuser', (req, res) => {
         });
     });
 });
+router.get('/sendmsg', (req, res)=>{
+  res.render('admin/adminhome/sendmsg');
+});
+
+router.post('/sendmsg', (req, res)=>{
+   var x=req.cookies['username']
+   console.log(x)
+   var y="manager";
+	var user = {
+		date: new Date(),
+        sendfrom: req.cookies['username'],
+		sendto: req.body.to,
+		msg: req.body.msg,
+		type: y
+		
+	};
+	userModel.validate3(user,(type) => {
+		if ( type == req.body.to) {
+			userModel.msg(user, function(status){
+				if(status){
+					 console.log("Sent");
+					 res.send('<h3>Sent Successfully</h3>');
+				 }
+				 else{
+					   console.log("Error");  
+				 }
+		 });
+		}
+		else {
+			
+			  res.send("User Name doesn't in the list") 
+		}
+	})
+   
+
+})
+router.get('/receivedmsg', (req, res)=>{
+  
+	userModel.getByMsg(function(results)
+	{
+		res.render('admin/adminhome/receivedmsg', {users: results});
+		
+	});
+    
+	
+});
+router.get('/profile', (req, res)=>{
+
+	var user= req.cookies['username'];
+	console.log(user);
+	userModel.getAll2(user,function(results)
+	{
+	   res.render('admin/adminhome/profile', {users: results});
+	});
+})
+router.get('/transaction', (req, res)=>{
+	var user= req.cookies['username']
+	console.log(user)
+    userModel.transaction(user, (result) => {
+		res.send(JSON.stringify(result));
+	
+  });
+})
+router.get('/salarylist', (req, res)=>{
+	
+	var user= req.cookies['username']
+	console.log(user)
+    userModel.salarylist(user, (result) => {
+		res.json(result)
+	})
+})
+
+
 module.exports = router; 

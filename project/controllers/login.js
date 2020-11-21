@@ -12,7 +12,7 @@ router.get('/',(req,res)=>
 router.post('/',(req,res)=>
 {
    var user = {
-    username: req.body.username ,
+    username: req.body.username,
     password : req.body.password
    };
    um.validate(user,(type) => {
@@ -22,7 +22,7 @@ router.post('/',(req,res)=>
            }
            else if(type== 'manager'){
             res.cookie('username', req.body.username);
-            res.redirect('/manager');             
+            res.redirect('/managerhome');             
         }
         else if(type== 'user'){
             res.cookie('username', req.body.username);
