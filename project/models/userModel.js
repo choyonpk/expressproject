@@ -19,7 +19,7 @@ module.exports= {
 			}else{
 				callback(false);
 			}
-		}
+		})
 	},
 	getById: function(id, callback){
 
@@ -71,6 +71,12 @@ module.exports= {
 	},
 	updateCustomer:function(user, callback){
 		var sql = "update user set Name = '"+user.name+"',ContactNo = '"+user.contactno+"',Email = '"+user.email+"',Address = '"+user.address+"' where UserName = '"+user.username+"'";
+		if(status){
+			callback(true);
+		}else{
+			callback(false);
+		}
+	},
 	salary:function(user, callback){
 		var sql = "Insert into salary (ID,UserName,Salary,Date) VALUES('"+user.id+"','"+user.username+"','"+user.salary+"','"+user.date+"')";
 		db.execute(sql, function(status){
@@ -81,8 +87,8 @@ module.exports= {
 			}
 	
 		});
-	}
-},
+	},
+
 	search: (search, callback) => {
 		var sql = "SELECT * FROM user WHERE ID = '"+search+"' OR Name = '"+search+"' OR UserName = '"+search+"' OR Email = '"+search+"' OR ContactNO = '"+search+"' OR NID = '"+search+"' OR Gender = '"+search+"' OR UserType = '"+search+"' OR Address = '"+search+"'";
 		db.getResults(sql, (results) => {
